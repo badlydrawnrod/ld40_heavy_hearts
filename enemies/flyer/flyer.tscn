@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://enemies/flyer/flyer.gd" type="Script" id=1]
+[ext_resource path="res://enemies/flyer/flyer.png" type="Texture" id=2]
+[ext_resource path="res://enemies/flyer/flyer_balloon.png" type="Texture" id=3]
+[ext_resource path="res://effects/particles.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="flyer" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 4
+collision/mask = 1033
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+RIGHT = Vector2( 96, 0 )
+THRUST = Vector2( 0, -96 )
+horizontal_damping = 0.05
+score = 100
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="balloon area" type="Area2D" parent="."]
+
+transform/pos = Vector2( 0, -16 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 16
+collision/mask = 0
+
+[node name="ball" type="CollisionShape2D" parent="balloon area"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="mounts" type="Node2D" parent="balloon area"]
+
+[node name="balloon sprite" type="Sprite" parent="balloon area/mounts"]
+
+transform/pos = Vector2( 2, 0 )
+texture = ExtResource( 3 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="particles" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 0, 6 )
+
+[connection signal="body_enter" from="balloon area" to="." method="_on_balloon_area_body_enter"]
+
+
