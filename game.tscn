@@ -14,21 +14,21 @@ font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 
 font/size = 16
 font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 
 font/size = 8
 font/use_mipmaps = false
 font/use_filter = false
 font/font = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 
 font/size = 8
 font/use_mipmaps = false
@@ -267,7 +267,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 472.0
 margin/bottom = 32.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
@@ -291,7 +291,7 @@ margin/left = 0.0
 margin/top = 36.0
 margin/right = 472.0
 margin/bottom = 68.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.74902, 0.74902, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
@@ -316,7 +316,7 @@ margin/left = 0.0
 margin/top = 72.0
 margin/right = 472.0
 margin/bottom = 216.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
@@ -347,7 +347,7 @@ margin/left = 0.0
 margin/top = 220.0
 margin/right = 472.0
 margin/bottom = 284.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 0
@@ -371,9 +371,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 359.0
+margin/top = 288.0
 margin/right = 472.0
-margin/bottom = 494.0
+margin/bottom = 312.0
 
 [node name="CenterContainer" type="CenterContainer" parent="gui/main menu/buttons"]
 
@@ -381,10 +381,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 4.0
-margin/top = -83.0
-margin/right = 468.0
-margin/bottom = 52.0
+margin/left = 8.0
+margin/top = 0.0
+margin/right = 472.0
+margin/bottom = 24.0
 use_top_left = false
 
 [node name="start button" type="Button" parent="gui/main menu/buttons/CenterContainer"]
@@ -394,10 +394,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 206.0
-margin/top = 60.0
+margin/top = 5.0
 margin/right = 258.0
-margin/bottom = 74.0
-custom_fonts/font = SubResource( 2 )
+margin/bottom = 19.0
+custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
