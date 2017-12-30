@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/player.png" type="Texture" id=2]
 [ext_resource path="res://player/player_balloon.png" type="Texture" id=3]
 [ext_resource path="res://effects/particles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/player_particles..tres" type="Material" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -18,182 +19,180 @@ radius = 10.0
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, -8, -24, 16, 24, 16 )
+points = PoolVector2Array( 0, -8, -24, 16, 24, 16 )
 
 [node name="player" type="KinematicBody2D"]
 
-transform/pos = Vector2( 240, 80 )
-input/pickable = false
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-shapes/1/shape = SubResource( 1 )
-shapes/1/transform = Matrix32( 1, 0, 0, 1, 120, 0 )
-shapes/1/trigger = false
-collision/layers = 1
-collision/mask = 1041
-collision/margin = 0.08
-script/script = ExtResource( 1 )
+position = Vector2( 240, 80 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1041
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
 horizontal_damping = 0.1
 max_carrying = 6
 
-[node name="shape0" type="CollisionShape2D" parent="."]
+[node name="shape0" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="sprite" type="Sprite" parent="shape0"]
+[node name="sprite" type="Sprite" parent="shape0" index="0"]
 
 texture = ExtResource( 2 )
 
-[node name="balloon area" type="Area2D" parent="shape0"]
+[node name="balloon area" type="Area2D" parent="shape0" index="1"]
 
 editor/display_folded = true
-transform/pos = Vector2( 0, -16 )
-input/pickable = true
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -2 )
-shapes/0/trigger = true
+position = Vector2( 0, -16 )
+input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 8
-collision/mask = 0
+collision_layer = 8
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="balloon shape" type="CollisionShape2D" parent="shape0/balloon area"]
+[node name="balloon shape" type="CollisionShape2D" parent="shape0/balloon area" index="0"]
 
-transform/pos = Vector2( 0, -2 )
+position = Vector2( 0, -2 )
 shape = SubResource( 2 )
-trigger = true
-_update_shape_index = 0
 
-[node name="mounts" type="Node2D" parent="shape0/balloon area"]
+[node name="mounts" type="Node2D" parent="shape0/balloon area" index="1"]
 
 editor/display_folded = true
 
-[node name="balloon sprite 1" type="Sprite" parent="shape0/balloon area/mounts"]
+[node name="balloon sprite 1" type="Sprite" parent="shape0/balloon area/mounts" index="0"]
 
-visibility/visible = false
-transform/pos = Vector2( -1, -1 )
-z/z = 1
+visible = false
+position = Vector2( -1, -1 )
+z = 1
 texture = ExtResource( 3 )
 
-[node name="balloon sprite 2" type="Sprite" parent="shape0/balloon area/mounts"]
+[node name="balloon sprite 2" type="Sprite" parent="shape0/balloon area/mounts" index="1"]
 
-visibility/visible = false
-transform/pos = Vector2( 5, -4 )
+visible = false
+position = Vector2( 5, -4 )
 texture = ExtResource( 3 )
 
-[node name="collector" type="Area2D" parent="shape0/balloon area"]
+[node name="collector" type="Area2D" parent="shape0/balloon area" index="2"]
 
-transform/pos = Vector2( 0, 16 )
-input/pickable = true
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
+position = Vector2( 0, 16 )
+input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 0
-collision/mask = 34
+collision_layer = 0
+collision_mask = 34
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="shape" type="CollisionShape2D" parent="shape0/balloon area/collector"]
+[node name="shape" type="CollisionShape2D" parent="shape0/balloon area/collector" index="0"]
 
 shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 0
 
-[node name="particles" parent="shape0" instance=ExtResource( 4 )]
+[node name="particles" parent="shape0" index="2" instance=ExtResource( 4 )]
 
-[node name="puppy mount" type="Position2D" parent="shape0"]
+rotation = 1.5708
+emitting = false
+amount = 32
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.2
+local_coords = false
+process_material = ExtResource( 5 )
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
 
-[node name="shape1" type="CollisionShape2D" parent="."]
+[node name="puppy mount" type="Position2D" parent="shape0" index="3"]
 
-editor/display_folded = true
-transform/pos = Vector2( 120, 0 )
+[node name="shape1" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 120, 0 )
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 1
 
-[node name="sprite" type="Sprite" parent="shape1"]
+[node name="sprite" type="Sprite" parent="shape1" index="0"]
 
 texture = ExtResource( 2 )
 
-[node name="balloon area" type="Area2D" parent="shape1"]
+[node name="balloon area" type="Area2D" parent="shape1" index="1"]
 
-transform/pos = Vector2( 0, -16 )
-input/pickable = true
-shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -2 )
-shapes/0/trigger = true
+editor/display_folded = true
+position = Vector2( 0, -16 )
+input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 8
-collision/mask = 0
+collision_layer = 8
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="balloon shape" type="CollisionShape2D" parent="shape1/balloon area"]
+[node name="balloon shape" type="CollisionShape2D" parent="shape1/balloon area" index="0"]
 
-transform/pos = Vector2( 0, -2 )
+position = Vector2( 0, -2 )
 shape = SubResource( 2 )
-trigger = true
-_update_shape_index = 0
 
-[node name="mounts" type="Node2D" parent="shape1/balloon area"]
+[node name="mounts" type="Node2D" parent="shape1/balloon area" index="1"]
 
 editor/display_folded = true
 
-[node name="balloon sprite 1" type="Sprite" parent="shape1/balloon area/mounts"]
+[node name="balloon sprite 1" type="Sprite" parent="shape1/balloon area/mounts" index="0"]
 
-visibility/visible = false
-transform/pos = Vector2( -1, -1 )
-z/z = 1
+visible = false
+position = Vector2( -1, -1 )
+z = 1
 texture = ExtResource( 3 )
 
-[node name="balloon sprite 2" type="Sprite" parent="shape1/balloon area/mounts"]
+[node name="balloon sprite 2" type="Sprite" parent="shape1/balloon area/mounts" index="1"]
 
-visibility/visible = false
-transform/pos = Vector2( 5, -4 )
+visible = false
+position = Vector2( 5, -4 )
 texture = ExtResource( 3 )
 
-[node name="collector" type="Area2D" parent="shape1/balloon area"]
+[node name="collector" type="Area2D" parent="shape1/balloon area" index="2"]
 
-transform/pos = Vector2( 0, 16 )
-input/pickable = true
-shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
+position = Vector2( 0, 16 )
+input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 0
-collision/mask = 34
+collision_layer = 0
+collision_mask = 34
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="shape" type="CollisionShape2D" parent="shape1/balloon area/collector"]
+[node name="shape" type="CollisionShape2D" parent="shape1/balloon area/collector" index="0"]
 
 shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 0
 
-[node name="particles" parent="shape1" instance=ExtResource( 4 )]
+[node name="particles" parent="shape1" index="2" instance=ExtResource( 4 )]
 
-[node name="puppy mount" type="Position2D" parent="shape1"]
+rotation = 1.5708
+emitting = false
+amount = 32
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.2
+local_coords = false
+process_material = ExtResource( 5 )
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
 
-[connection signal="body_enter" from="shape0/balloon area" to="." method="_on_balloon_area_body_enter"]
+[node name="puppy mount" type="Position2D" parent="shape1" index="3"]
 
-[connection signal="area_enter" from="shape0/balloon area/collector" to="." method="_on_collector_area_enter"]
+[connection signal="body_entered" from="shape0/balloon area" to="." method="_on_balloon_area_body_enter"]
 
-[connection signal="body_enter" from="shape0/balloon area/collector" to="." method="_on_collect_puppy"]
+[connection signal="area_entered" from="shape0/balloon area/collector" to="." method="_on_collector_area_enter"]
 
-[connection signal="body_enter" from="shape1/balloon area" to="." method="_on_balloon_area_body_enter"]
+[connection signal="body_entered" from="shape0/balloon area/collector" to="." method="_on_collect_puppy"]
 
-[connection signal="area_enter" from="shape1/balloon area/collector" to="." method="_on_collector_area_enter"]
+[connection signal="body_entered" from="shape1/balloon area" to="." method="_on_balloon_area_body_enter"]
 
-[connection signal="body_enter" from="shape1/balloon area/collector" to="." method="_on_collect_puppy"]
+[connection signal="area_entered" from="shape1/balloon area/collector" to="." method="_on_collector_area_enter"]
+
+[connection signal="body_entered" from="shape1/balloon area/collector" to="." method="_on_collect_puppy"]
 
 

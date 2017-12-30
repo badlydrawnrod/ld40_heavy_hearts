@@ -25,7 +25,7 @@ var balloons = 2
 func _ready():
 	Bus.connect("level.started", self, "_on_level_started")
 
-	set_fixed_process(true)
+	set_physics_process(true)
 
 	var shape = get_child(0)
 	var extent_shape = shape.get_shape()
@@ -33,14 +33,14 @@ func _ready():
 
 	# Get viewport left and right.
 	var vp = get_viewport()
-	var r = vp.get_rect()
-	left = r.pos.x
+	var r = vp.get_visible_rect()
+	left = r.position.x
 	right = r.end.x
 	width = right - left
 
 	for i in range(get_child_count()):
 		var c = get_child(i)
-		c.set_pos(Vector2(i * width, 0))
+		c.position = Vector2(i * width, 0)
 
 		# Add the puppies and balloons.
 		for j in range(carrying):
@@ -58,9 +58,9 @@ func _ready():
 			facing = -1
 
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	# Where were we before we moved.
-	var last_pos = get_pos()
+	var last_pos = position
 
 	# Read the inputs.
 	var input_right = Input.is_action_pressed("player_right")
@@ -68,9 +68,12 @@ func _fixed_process(delta):
 	var input_thrust = Input.is_action_pressed("player_thrust")
 
 	# If we have any balloons attached, then allow the inputs to take effect.
-	var input_velocity
+	var input_velocity = Vector2()
 	if balloons > 0:
-		var input_velocity = RIGHT * (input_right - input_left)
+		if input_right and not input_left:
+			input_velocity = RIGHT
+		elif input_left and not input_right:
+			input_velocity = -RIGHT
 
 		velocity.x = lerp(velocity.x, input_velocity.x, horizontal_damping)
 		if input_velocity.x > 0 and facing < 0:
@@ -97,13 +100,12 @@ func _fixed_process(delta):
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 	Wrapper.wrap_horizontal(self, last_pos, width, extents, left, right)
 
-	var pos = get_pos()
-	Bus.emit_signal("player.moved", pos)
+	Bus.emit_signal("player.moved", position)
 
 
 func _on_collect_puppy(body):
 	if carrying < max_carrying:
-		Bus.emit_signal("puppy.collected", body.get_pos())
+		Bus.emit_signal("puppy.collected", body.position)
 		body.queue_free()
 		add_puppy(carrying)
 		carrying += 1
@@ -117,7 +119,7 @@ func add_puppy(i):
 			angle = -angle-1
 		angle *= PI / 9
 		angle += PI / 2
-		p.set_pos(Vector2(cos(angle) * 16, sin(angle) * 20))
+		p.position = Vector2(cos(angle) * 16, sin(angle) * 20)
 		var mount = c.get_node("puppy mount")
 		mount.add_child(p)
 
@@ -130,8 +132,8 @@ func _on_balloon_area_body_enter(body):
 	for child in get_children():
 		remove_balloon(child, balloons)
 	if balloons == 0:
-		set_collision_mask(1024)	# Collide with water only.
-		set_layer_mask(0)
+		collision_mask = 1024		# Collide with water only.
+		collision_layer = 0
 
 
 func _on_collector_area_enter(area):

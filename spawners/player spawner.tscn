@@ -1,24 +1,22 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://spawners/player_spawner.gd" type="Script" id=1]
 [ext_resource path="res://spawners/spawning.png" type="Texture" id=2]
 
 [node name="player spawner" type="Position2D"]
 
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 delay = 0.5
 
 [node name="sprite" type="Sprite" parent="."]
 
-visibility/visible = false
+visible = false
 texture = ExtResource( 2 )
 hframes = 4
 
 [node name="tween" type="Tween" parent="."]
 
-playback/process_mode = 0
+playback_process_mode = 0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-

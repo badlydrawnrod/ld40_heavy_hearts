@@ -20,8 +20,8 @@ func _ready():
 
 
 func _on_game_start():
-	get_node("gui/main menu").hide()
-	get_node("gui/game gui").show()
+	get_node("gui layer/gui/main menu").hide()
+	get_node("gui layer/gui/game gui").show()
 	set_score(0)
 	set_lives(3)
 
@@ -31,8 +31,8 @@ func _on_game_start():
 
 
 func _on_game_over():
-	get_node("gui/main menu").show()
-	get_node("gui/game gui").hide()
+	get_node("gui layer/gui/main menu").show()
+	get_node("gui layer/gui/game gui").hide()
 
 
 func _on_player_killed():
@@ -69,8 +69,8 @@ func _on_enemy_killed(enemy):
 
 func _on_puppies_saved(count):
 	set_score(score + 100 * count * count)
-	
-	
+
+
 func set_score(new_score):
 	score = new_score
 	Bus.emit_signal("score.changed", score)

@@ -1,119 +1,134 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://level manager/level manager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://fonts/PressStart2P.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://gui/status.gd" type="Script" id=4]
-[ext_resource path="res://gui/main_menu.gd" type="Script" id=5]
-[ext_resource path="res://sound manager/sound manager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://camera/game camera..tscn" type="PackedScene" id=3]
+[ext_resource path="res://sound manager/sound manager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://fonts/PressStart2P.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://gui/status.gd" type="Script" id=6]
+[ext_resource path="res://gui/main_menu.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 
-font/size = 8
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 3 )
+size = 8
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 
-font/size = 16
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 3 )
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
 
-font/size = 8
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 3 )
+size = 8
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
 
-font/size = 8
-font/use_mipmaps = false
-font/use_filter = false
-font/font = ExtResource( 3 )
+size = 8
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" index="0"]
 
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 death_delay_time = 3
 
-[node name="level manager" parent="." instance=ExtResource( 2 )]
+[node name="level manager" parent="." index="0" instance=ExtResource( 2 )]
 
-shake_duration = 0.5
-shake_start_size = 2
-shake_end_size = 1
+[node name="game camera" parent="." index="1" instance=ExtResource( 3 )]
 
-[node name="gui" type="Control" parent="."]
+[node name="sound manager" parent="." index="2" instance=ExtResource( 4 )]
 
-anchor/right = 1
-anchor/bottom = 1
-rect/min_size = Vector2( 480, 320 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
-size_flags/vertical = 1
-margin/left = 0.0
-margin/top = 0.0
-margin/right = -416.0
-margin/bottom = -256.0
+visible = false
 
-[node name="game gui" type="MarginContainer" parent="gui"]
+[node name="gui layer" type="CanvasLayer" parent="." index="3"]
 
 editor/display_folded = true
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-rect/min_size = Vector2( 480, 320 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 1
-size_flags/vertical = 1
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+layer = 100
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="gui" type="Control" parent="gui layer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 480, 320 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="game gui" type="MarginContainer" parent="gui layer/gui" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 480, 320 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
 custom_constants/margin_bottom = 4
 
-[node name="game gui vbox" type="VBoxContainer" parent="gui/game gui"]
+[node name="game gui vbox" type="VBoxContainer" parent="gui layer/gui/game gui" index="0"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 3
-size_flags/vertical = 2
-margin/left = 4.0
-margin/top = 4.0
-margin/right = 476.0
-margin/bottom = 316.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 476.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 2
 alignment = 0
 
-[node name="text row" type="HBoxContainer" parent="gui/game gui/game gui vbox"]
+[node name="text row" type="HBoxContainer" parent="gui layer/gui/game gui/game gui vbox" index="0"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 472.0
-margin/bottom = 8.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 472.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 2
 alignment = 0
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="score" type="Label" parent="gui/game gui/game gui vbox/text row"]
+[node name="score" type="Label" parent="gui layer/gui/game gui/game gui vbox/text row" index="0"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 154.0
-margin/bottom = 8.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 154.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -124,16 +139,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="high score" type="Label" parent="gui/game gui/game gui vbox/text row"]
+[node name="high score" type="Label" parent="gui layer/gui/game gui/game gui vbox/text row" index="1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 0
-margin/left = 158.0
-margin/top = 0.0
-margin/right = 312.0
-margin/bottom = 8.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 158.0
+margin_right = 312.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -145,16 +163,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="lives" type="Label" parent="gui/game gui/game gui vbox/text row"]
+[node name="lives" type="Label" parent="gui layer/gui/game gui/game gui vbox/text row" index="2"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 0
-margin/left = 316.0
-margin/top = 0.0
-margin/right = 472.0
-margin/bottom = 8.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 316.0
+margin_right = 472.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -166,29 +187,35 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="values row" type="HBoxContainer" parent="gui/game gui/game gui vbox"]
+[node name="values row" type="HBoxContainer" parent="gui layer/gui/game gui/game gui vbox" index="1"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 12.0
-margin/right = 472.0
-margin/bottom = 20.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 12.0
+margin_right = 472.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 2
 alignment = 0
-script/script = ExtResource( 4 )
+script = ExtResource( 6 )
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="score" type="Label" parent="gui/game gui/game gui vbox/values row"]
+[node name="score" type="Label" parent="gui layer/gui/game gui/game gui vbox/values row" index="0"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 154.0
-margin/bottom = 8.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 154.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -199,16 +226,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="high score" type="Label" parent="gui/game gui/game gui vbox/values row"]
+[node name="high score" type="Label" parent="gui layer/gui/game gui/game gui vbox/values row" index="1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 0
-margin/left = 158.0
-margin/top = 0.0
-margin/right = 312.0
-margin/bottom = 8.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 158.0
+margin_right = 312.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -220,16 +250,19 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="lives" type="Label" parent="gui/game gui/game gui vbox/values row"]
+[node name="lives" type="Label" parent="gui layer/gui/game gui/game gui vbox/values row" index="2"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 0
-margin/left = 316.0
-margin/top = 0.0
-margin/right = 472.0
-margin/bottom = 8.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 316.0
+margin_right = 472.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -241,32 +274,36 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="main menu" type="VBoxContainer" parent="gui"]
+[node name="main menu" type="VBoxContainer" parent="gui layer/gui" index="1"]
 
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 4.0
-margin/top = 4.0
-margin/right = 4.0
-margin/bottom = 4.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 4.0
+margin_bottom = 4.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 0
-script/script = ExtResource( 5 )
+script = ExtResource( 7 )
 
-[node name="title" type="Label" parent="gui/main menu"]
+[node name="title" type="Label" parent="gui layer/gui/main menu" index="0"]
 
-rect/min_size = Vector2( 0, 32 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 472.0
-margin/bottom = 32.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 480.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -280,17 +317,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="subtitle" type="Label" parent="gui/main menu"]
+[node name="subtitle" type="Label" parent="gui layer/gui/main menu" index="1"]
 
-rect/min_size = Vector2( 0, 32 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 36.0
-margin/right = 472.0
-margin/bottom = 68.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 36.0
+margin_right = 480.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.74902, 0.74902, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -305,17 +345,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="exposition" type="Label" parent="gui/main menu"]
+[node name="exposition" type="Label" parent="gui layer/gui/main menu" index="2"]
 
-rect/min_size = Vector2( 0, 144 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 72.0
-margin/right = 472.0
-margin/bottom = 216.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 72.0
+margin_right = 480.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 144 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -336,17 +379,20 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="controls" type="Label" parent="gui/main menu"]
+[node name="controls" type="Label" parent="gui layer/gui/main menu" index="3"]
 
-rect/min_size = Vector2( 0, 64 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 220.0
-margin/right = 472.0
-margin/bottom = 284.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 220.0
+margin_right = 480.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 0, 64 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -364,48 +410,59 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="buttons" type="MarginContainer" parent="gui/main menu"]
+[node name="buttons" type="MarginContainer" parent="gui layer/gui/main menu" index="4"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 288.0
-margin/right = 472.0
-margin/bottom = 312.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 288.0
+margin_right = 480.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="gui/main menu/buttons"]
+[node name="CenterContainer" type="CenterContainer" parent="gui layer/gui/main menu/buttons" index="0"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 8.0
-margin/top = 0.0
-margin/right = 472.0
-margin/bottom = 24.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 480.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 use_top_left = false
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Size Flags" ]
 
-[node name="start button" type="Button" parent="gui/main menu/buttons/CenterContainer"]
+[node name="start button" type="Button" parent="gui layer/gui/main menu/buttons/CenterContainer" index="0"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 206.0
-margin/top = 5.0
-margin/right = 258.0
-margin/bottom = 19.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 210.0
+margin_top = 9.0
+margin_right = 262.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_fonts/font = SubResource( 4 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 text = "START"
 flat = false
+align = 1
 
-[node name="sound manager" parent="." instance=ExtResource( 6 )]
-
-[connection signal="pressed" from="gui/main menu/buttons/CenterContainer/start button" to="gui/main menu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="gui layer/gui/main menu/buttons/CenterContainer/start button" to="gui layer/gui/main menu" method="_on_start_button_pressed"]
 
 

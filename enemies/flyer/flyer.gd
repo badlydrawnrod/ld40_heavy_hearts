@@ -25,7 +25,7 @@ var state = BALLOONING
 
 func _ready():
 	Bus.connect("level.started", self, "_on_level_started")
-	set_fixed_process(true)
+	set_physics_process(true)
 
 	# Get the underlying shape's extents.
 	var shape = get_node("shape0")
@@ -34,18 +34,18 @@ func _ready():
 
 	# Get viewport left and right.
 	var vp = get_viewport()
-	var r = vp.get_rect()
-	left = r.pos.x
+	var r = vp.get_visible_rect()
+	left = r.position.x
 	right = r.end.x
 	width = right - left
-	
+
 	if state == BALLOONING:
 		add_balloon()
 
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	# Where were we before we moved.
-	var last_pos = get_pos()
+	var last_pos = position
 
 	# Read the inputs.
 	var input_right = Input.is_action_pressed("player_right")
@@ -57,7 +57,7 @@ func _fixed_process(delta):
 	else:
 		input_velocity = Vector2()
 	velocity.x = lerp(velocity.x, input_velocity.x, horizontal_damping)
-	
+
 	time += delta
 	if state == BALLOONING:
 		if time >= thrust_time:
@@ -75,7 +75,7 @@ func _fixed_process(delta):
 				for c in get_children():
 					c.get_node("sprite").set_flip_h(facing < 0)
 					c.get_node("balloon area").set_scale(Vector2(facing, 1))
-	
+
 	velocity += GRAVITY * delta
 	if state == FALLING:
 		velocity += GRAVITY * delta
@@ -83,8 +83,7 @@ func _fixed_process(delta):
 	velocity = move_and_slide(velocity, FLOOR_NORMAL)
 
 	# Check if we're wrapping the screen horizontally.
-	var pos = get_pos()
-	Wrapper.wrap_horizontal(self, pos, width, extents, left, right)
+	Wrapper.wrap_horizontal(self, position, width, extents, left, right)
 
 
 func _on_balloon_area_body_enter(body):
@@ -93,11 +92,11 @@ func _on_balloon_area_body_enter(body):
 	Bus.emit_signal("enemy.popped")
 	# This should really be parachuting, but I'm dropping scope.
 	state = FALLING
-	set_collision_mask(1024)	# Collide with water only.
-	set_layer_mask(0)
-	
+	collision_mask = 1024	# Collide with water only.
+	collision_layer = 0		# Nothing can collide with us.
+
 	remove_balloon()
-	
+
 
 func remove_balloon():
 	for child in get_children():
@@ -113,7 +112,7 @@ func add_balloon():
 
 func _on_entered_water():
 	Bus.emit_signal("enemy.killed", self)
-	
+
 	# Create a timer.
 	var t = Timer.new()
 	t.set_wait_time(0.5)
@@ -123,7 +122,7 @@ func _on_entered_water():
 
 	# Wait for the timeout signal.
 	yield(t, "timeout")
-	
+
 	queue_free()
 
 

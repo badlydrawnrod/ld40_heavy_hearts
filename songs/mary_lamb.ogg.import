@@ -1,0 +1,14 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mary_lamb.ogg-24bdc57fe468efa2fed29ec803b54d55.oggstr"
+
+[deps]
+
+source_md5="a7fc7a3bcef6d768dd9cee333f96048e"
+
+[params]
+
+loop=true
+loop_offset=0

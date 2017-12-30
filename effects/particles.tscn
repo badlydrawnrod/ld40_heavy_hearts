@@ -1,32 +1,25 @@
-[gd_scene format=1]
+[gd_scene format=2]
 
 [node name="particles" type="Particles2D"]
 
-transform/pos = Vector2( 0, 8 )
-config/amount = 32
-config/lifetime = 0.2
-config/emit_timeout = 0.1
-config/emitting = false
-config/process_mode = 0
-config/half_extents = Vector2( 1, 1 )
-config/local_space = false
-config/explosiveness = 0.2
-params/direction = 0.0
-params/spread = 30.0
-params/linear_velocity = 20.0
-params/spin_velocity = 0.0
-params/orbit_velocity = 0.0
-params/gravity_direction = 0.0
-params/gravity_strength = 9.8
-params/radial_accel = 0.0
-params/tangential_accel = 0.0
-params/damping = 0.0
-params/initial_angle = 0.0
-params/initial_size = 1.0
-params/final_size = 0.2
-params/hue_variation = 0.0
-params/anim_speed_scale = 1.0
-params/anim_initial_pos = 0.0
-color/color = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 0, 8 )
+emitting = true
+amount = 8
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = null
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
 
 

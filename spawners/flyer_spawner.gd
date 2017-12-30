@@ -17,10 +17,8 @@ func _ready():
 
 
 func _on_level_started():
-	timer.set_active(false)
 	timer.stop()
-	timer.set_wait_time(initial_spawn_delay)
-	timer.set_active(true)
+	timer.wait_time = initial_spawn_delay
 	timer.start()
 	flyers = 0
 	sprite.hide()
@@ -34,18 +32,18 @@ func _on_timer_timeout():
 
 
 func spawn_flyer():
-	
+
 	var tween = get_node("tween")
 	sprite.show()
 	tween.interpolate_property(sprite, "frame", 0, 3, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
-	yield(tween, "tween_complete")
+	yield(tween, "tween_completed")
 	sprite.hide()
-	
+
 	# Spawn a flyer.
 	var flyer = Flyer.instance()
-	flyer.set_pos(get_pos())
+	flyer.position = position
 	get_parent().add_child(flyer)
-	
-	timer.set_wait_time(spawn_delay)
+
+	timer.wait_time = spawn_delay
 	timer.start()

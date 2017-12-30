@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://platform/platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://home/home.tscn" type="PackedScene" id=2]
@@ -9,207 +9,239 @@
 
 [node name="level" type="Node2D"]
 
-[node name="platform layer" type="Node2D" parent="."]
+[node name="platform layer" type="Node2D" parent="." index="0"]
 
 editor/display_folded = true
 
-[node name="platform5" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform5" parent="platform layer" index="0" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 240, 224 )
+position = Vector2( 240, 224 )
 
-[node name="platform6" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform6" parent="platform layer" index="1" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 96, 248 )
+position = Vector2( 96, 248 )
 
-[node name="platform7" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform7" parent="platform layer" index="2" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 400, 248 )
+position = Vector2( 400, 248 )
 
-[node name="platform8" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform8" parent="platform layer" index="3" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 352, 248 )
+position = Vector2( 352, 248 )
 
-[node name="platform9" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform9" parent="platform layer" index="4" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 304, 248 )
+position = Vector2( 304, 248 )
 
-[node name="platform10" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform10" parent="platform layer" index="5" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 256, 248 )
+position = Vector2( 256, 248 )
 
-[node name="platform11" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform11" parent="platform layer" index="6" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 224, 136 )
+position = Vector2( 224, 136 )
 
-[node name="platform13" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform13" parent="platform layer" index="7" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 344, 112 )
+position = Vector2( 344, 112 )
 
-[node name="platform14" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform14" parent="platform layer" index="8" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 392, 112 )
+position = Vector2( 392, 112 )
 
-[node name="platform15" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform15" parent="platform layer" index="9" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 392, 112 )
+position = Vector2( 392, 112 )
 
-[node name="platform16" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform16" parent="platform layer" index="10" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 192, -8 )
+position = Vector2( 192, -8 )
 
-[node name="platform17" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform17" parent="platform layer" index="11" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 280, -96 )
+position = Vector2( 280, -96 )
 
-[node name="platform18" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform18" parent="platform layer" index="12" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 48, -64 )
+position = Vector2( 48, -64 )
 
-[node name="platform19" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform19" parent="platform layer" index="13" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 176, 72 )
+position = Vector2( 176, 72 )
 
-[node name="platform20" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform20" parent="platform layer" index="14" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 128, 72 )
+position = Vector2( 128, 72 )
 
-[node name="platform21" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform21" parent="platform layer" index="15" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 192, -320 )
+position = Vector2( 192, -320 )
 
-[node name="platform22" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform22" parent="platform layer" index="16" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 240, -320 )
+position = Vector2( 240, -320 )
 
-[node name="platform23" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform23" parent="platform layer" index="17" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 288, -320 )
+position = Vector2( 288, -320 )
 
-[node name="platform24" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform24" parent="platform layer" index="18" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 192, -168 )
+position = Vector2( 192, -168 )
 
-[node name="platform25" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform25" parent="platform layer" index="19" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 192, -168 )
+position = Vector2( 192, -168 )
 
-[node name="platform12" parent="platform layer" instance=ExtResource( 1 )]
+[node name="platform12" parent="platform layer" index="20" instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 176, 280 )
+position = Vector2( 176, 280 )
 
-[node name="home" parent="." instance=ExtResource( 2 )]
+[node name="home" parent="." index="1" instance=ExtResource( 2 )]
 
-transform/pos = Vector2( 239, -340 )
+position = Vector2( 239, -340 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="mobiles layer" type="Node2D" parent="."]
+[node name="mobiles layer" type="Node2D" parent="." index="2"]
 
-[node name="puppies layer" type="Node2D" parent="mobiles layer"]
+[node name="puppies layer" type="Node2D" parent="mobiles layer" index="0"]
 
 editor/display_folded = true
 
-[node name="puppy" parent="mobiles layer/puppies layer" instance=ExtResource( 3 )]
+[node name="puppy" parent="mobiles layer/puppies layer" index="0" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 224, 128 )
+position = Vector2( 224, 128 )
+collision/safe_margin = 0.08
 
-[node name="puppy1" parent="mobiles layer/puppies layer" instance=ExtResource( 3 )]
+[node name="puppy1" parent="mobiles layer/puppies layer" index="1" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 344, 104 )
+position = Vector2( 344, 104 )
+collision/safe_margin = 0.08
 
-[node name="puppy2" parent="mobiles layer/puppies layer" instance=ExtResource( 3 )]
+[node name="puppy2" parent="mobiles layer/puppies layer" index="2" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 96, 240 )
+position = Vector2( 96, 240 )
+collision/safe_margin = 0.08
 
-[node name="puppy3" parent="mobiles layer/puppies layer" instance=ExtResource( 3 )]
+[node name="puppy3" parent="mobiles layer/puppies layer" index="3" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 192, -16 )
+position = Vector2( 192, -16 )
+collision/safe_margin = 0.08
 
-[node name="puppy4" parent="mobiles layer/puppies layer" instance=ExtResource( 3 )]
+[node name="puppy4" parent="mobiles layer/puppies layer" index="4" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 192, -176 )
+position = Vector2( 192, -176 )
+collision/safe_margin = 0.08
 
-[node name="puppy5" parent="mobiles layer/puppies layer" instance=ExtResource( 3 )]
+[node name="puppy5" parent="mobiles layer/puppies layer" index="5" instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 280, -104 )
+position = Vector2( 280, -104 )
+collision/safe_margin = 0.08
 
-[node name="flyer layer" type="Node2D" parent="mobiles layer"]
+[node name="flyer layer" type="Node2D" parent="mobiles layer" index="1"]
 
-[node name="flyer spawner" parent="mobiles layer/flyer layer" instance=ExtResource( 4 )]
+[node name="flyer spawner" parent="mobiles layer/flyer layer" index="0" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 120, 56 )
+position = Vector2( 120, 56 )
 
-[node name="flyer spawner 2" parent="mobiles layer/flyer layer" instance=ExtResource( 4 )]
+[node name="flyer spawner 2" parent="mobiles layer/flyer layer" index="1" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 360, 232 )
+position = Vector2( 360, 232 )
 
-[node name="flyer spawner 3" parent="mobiles layer/flyer layer" instance=ExtResource( 4 )]
+[node name="flyer spawner 3" parent="mobiles layer/flyer layer" index="2" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 384, 96 )
+position = Vector2( 384, 96 )
 
-[node name="flyer spawner 4" parent="mobiles layer/flyer layer" instance=ExtResource( 4 )]
+[node name="flyer spawner 4" parent="mobiles layer/flyer layer" index="3" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 56, -80 )
+position = Vector2( 56, -80 )
 
-[node name="flyer spawner5" parent="mobiles layer/flyer layer" instance=ExtResource( 4 )]
+[node name="flyer spawner5" parent="mobiles layer/flyer layer" index="4" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 208, -184 )
+position = Vector2( 208, -184 )
 
-[node name="player_layer" type="Node2D" parent="mobiles layer"]
+[node name="player_layer" type="Node2D" parent="mobiles layer" index="2"]
 
-[node name="player spawner" parent="mobiles layer/player_layer" instance=ExtResource( 5 )]
+[node name="player spawner" parent="mobiles layer/player_layer" index="0" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 240, 160 )
+position = Vector2( 240, 160 )
 
-[node name="water layer" type="Node2D" parent="."]
+[node name="water layer" type="Node2D" parent="." index="3"]
 
 editor/display_folded = true
-z/z = 2
+z = 2
 
-[node name="water" parent="water layer" instance=ExtResource( 6 )]
+[node name="water" parent="water layer" index="0" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 24, 312 )
+position = Vector2( 24, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water5" parent="water layer" instance=ExtResource( 6 )]
+[node name="water5" parent="water layer" index="1" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( -24, 312 )
+position = Vector2( -24, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water1" parent="water layer" instance=ExtResource( 6 )]
+[node name="water1" parent="water layer" index="2" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 72, 312 )
+position = Vector2( 72, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water2" parent="water layer" instance=ExtResource( 6 )]
+[node name="water2" parent="water layer" index="3" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 120, 312 )
+position = Vector2( 120, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water3" parent="water layer" instance=ExtResource( 6 )]
+[node name="water3" parent="water layer" index="4" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 168, 312 )
+position = Vector2( 168, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water4" parent="water layer" instance=ExtResource( 6 )]
+[node name="water4" parent="water layer" index="5" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 216, 312 )
+position = Vector2( 216, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water6" parent="water layer" instance=ExtResource( 6 )]
+[node name="water6" parent="water layer" index="6" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 264, 312 )
+position = Vector2( 264, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water7" parent="water layer" instance=ExtResource( 6 )]
+[node name="water7" parent="water layer" index="7" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 312, 312 )
+position = Vector2( 312, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water8" parent="water layer" instance=ExtResource( 6 )]
+[node name="water8" parent="water layer" index="8" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 360, 312 )
+position = Vector2( 360, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water9" parent="water layer" instance=ExtResource( 6 )]
+[node name="water9" parent="water layer" index="9" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 408, 312 )
+position = Vector2( 408, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water10" parent="water layer" instance=ExtResource( 6 )]
+[node name="water10" parent="water layer" index="10" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 456, 312 )
+position = Vector2( 456, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
-[node name="water11" parent="water layer" instance=ExtResource( 6 )]
+[node name="water11" parent="water layer" index="11" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 504, 312 )
+position = Vector2( 504, 312 )
+audio_bus_override = false
+audio_bus_name = "Master"
 
 

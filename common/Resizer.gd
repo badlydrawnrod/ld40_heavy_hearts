@@ -6,7 +6,7 @@ export var centre_window = true
 
 func _ready():
 	if not OS.is_window_fullscreen():
-		if Globals.get("display/stretch_mode") == "viewport" and not OS.is_window_fullscreen():
+		if ProjectSettings.get_setting("display/window/stretch/mode") == "viewport":
 			# Size the window to accommodate multiples of the base resolution.
 			var window_size = OS.get_window_size()
 			window_size *= scale

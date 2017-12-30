@@ -1,0 +1,66 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="Heavy Hearts"
+run/main_scene="res://game.tscn"
+boot_splash_fullsize=false
+icon="res://icon.png"
+main_scene="res://game.tscn"
+name="Heavy Hearts, a Ludum Dare 40 entry by Badly Drawn Rod"
+
+[autoload]
+
+Bus="*res://common/Bus.gd"
+Factory="*res://common/Factory.gd"
+Resizer="res://common/Resizer.gd"
+Wrapper="*res://common/Wrapper.gd"
+
+[display]
+
+window/size/width=480
+window/size/height=320
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+window/stretch/shrink="1"
+handheld/emulate_touchscreen=true
+name="LD40 Balloon Game"
+stretch/aspect="keep"
+stretch/mode="viewport"
+window/height=480
+window/width=320
+
+[image_loader]
+
+filter=false
+gen_mipmaps=false
+
+[input]
+
+player_left=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+player_right=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+player_thrust=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+ ]
+
+[physics_2d]
+
+motion_fix_enabled=true
+
+[rendering]
+
+environment/default_clear_color=Color( 0.0627451, 0.0509804, 0.247059, 1 )
+2d/use_pixel_snap=true
+viewport/default_clear_color=Color( 0.0627451, 0.0509804, 0.25098, 1 )
